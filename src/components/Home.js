@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../App.css'
 import Commands from './Commands'
 
@@ -11,6 +11,19 @@ const Home = () => {
     setCommand(contenido)
 }
 
+const onPressEnter = () => {
+const el = document.getElementById("code");
+el.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    traerDatos()
+  }
+});
+}
+
+useEffect(() => {
+  console.log(command);
+},[command])
+
   return (
     <>
     <div className="App">
@@ -20,9 +33,16 @@ const Home = () => {
     < h5 className='comment'>::Type help</h5>
     <div>
     <span class="prefix"> C:\Users\visitor{'>'} </span>
-    <input onClick={() => traerDatos()} className='code' type='text' id='code' autoFocus />
+    <input onClick = {
+      () => onPressEnter()
+    }
+    className = 'code'
+    type = 'text'
+    id = 'code'
+    autoComplete='off'
+    />
     </div>
-    {command === 'help' && <Commands />}
+    {command === 'help' ? <Commands /> :  (command === '' || command !== undefined) && <span className='comment'>No se reconoce el comando</span>}
      </p>
     </div>
     </>

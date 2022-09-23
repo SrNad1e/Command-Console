@@ -8,7 +8,7 @@
   background-color: rgb(0, 0, 0);
   border: none;
   color: #bdbdbd;
-  width: 500px;
+  width: 'auto';
   height: 36px;
 }
 
@@ -41,5 +41,5 @@
 input:focus {
   outline: none;
   box-shadow: none!important;
-  /*Sometime the blue border you see is from the box-shadow and removing box-shadow will remove the border*/
 }
+
